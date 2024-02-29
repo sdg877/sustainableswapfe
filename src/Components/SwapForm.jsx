@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import { currentUser } from '../lib/currentUser.js'; // Import the currentUser function
 
@@ -6,10 +6,7 @@ import { useParams } from 'react-router-dom';
 
 
 function SwapForm({ onSubmit, ownerId }) {
-  const [itemTitle, setItemTitle] = useState('');
-  const [itemDescription, setItemDescription] = useState('');
   const [offerAccepted, setOfferAccepted] = useState(false);
-  const [userId, setUserId] = useState(null); // Store the user ID
   const { itemId } = useParams()
   const item_id = itemId
 
@@ -61,7 +58,7 @@ function SwapForm({ onSubmit, ownerId }) {
           Item Description:
           <textarea value={item.item_description} id='item_description' name='item_description' onChange={handleChange} />
         </label>
-        {ownerId === userId && ( 
+        {ownerId === currentUserId && ( 
           <>
             <br />
             <label>
