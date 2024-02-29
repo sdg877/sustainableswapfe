@@ -9,7 +9,7 @@ function ItemViewPage() {
   console.log("Item ID:", itemId);
 
   const [item, setItem] = useState(null);
-  const [showForm, setShowForm] = useState(false);
+  const [, setShowForm] = useState(false);
   const [swaps, setSwaps] = useState([]);
 
   const handleFormSubmit = (formData) => {
@@ -73,7 +73,7 @@ function ItemViewPage() {
 
     // Fetch swaps associated with the item
     fetchSwaps();
-  }, [itemId]);
+  }, [itemId, fetchSwaps]);
 
   const s3BaseUrl = "https://sdg-ga-seb77.s3.amazonaws.com"
 
