@@ -16,9 +16,9 @@ function ItemViewPage() {
     axios.post(`${process.env.REACT_APP_BACKEND_URL}/items/${itemId}/create-swap/`, formData)
       .then(response => {
         console.log("Offer submitted:", response.data);
-        fetchSwaps();
+        const newSwap = response.data; // Assuming the response data contains the newly added swap
+        setSwaps(prevSwaps => [...prevSwaps, newSwap]); // Add the new swap to the existing swaps array
         setShowForm(false);
-        window.location.reload()
       })
       .catch(error => {
         console.error('Error submitting offer:', error);
@@ -26,7 +26,27 @@ function ItemViewPage() {
       });
   };
 
-  
+  // const handleFormSubmit = (formData) => {
+  //   axios.post(`${process.env.REACT_APP_BACKEND_URL}/items/${itemId}/create-swap/`, formData)
+  //     .then(response => {
+  //       fetchSwaps();
+  //       setShowForm(false);
+  //     })
+  //     .catch(error => {
+  //       console.error('Error submitting offer:', error);
+  //       // Handle error
+  //     });
+  // };
+
+  // const fetchSwaps = () => {
+  //   axios.get(`${process.env.REACT_APP_BACKEND_URL}/items/${itemId}/swaps/`)
+  //     .then(response => {
+  //       setSwaps(response.data);
+  //     })
+  //     .catch(error => {
+  //       console.error('Error fetching swaps:', error);
+  //     });
+  // };
 
   const fetchSwaps = () => {
     axios.get(`${process.env.REACT_APP_BACKEND_URL}/items/${itemId}/swaps/`)
