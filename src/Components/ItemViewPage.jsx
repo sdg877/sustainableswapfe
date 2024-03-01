@@ -28,10 +28,9 @@ function ItemViewPage() {
     }
   };
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
-    fetchItemDetails();
-  }, [itemId]);
+    fetchItemDetails(itemId);
+  });
 
 
   const handleFormSubmit = async (formData) => {
