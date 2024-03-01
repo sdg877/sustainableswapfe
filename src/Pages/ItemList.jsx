@@ -15,6 +15,7 @@ function ItemList() {
         console.error('Error fetching items:', error);
       });
   }, []);
+  if (!items) return null;
 
   return (
     <div className="centered-item-card-container">
