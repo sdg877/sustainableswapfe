@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 import { currentUser } from '../lib/currentUser.js'; // Import the currentUser function
 
 import { useParams } from 'react-router-dom';
@@ -8,7 +7,6 @@ import { useParams } from 'react-router-dom';
 function SwapForm({ onSubmit, ownerId }) {
   const [offerAccepted, setOfferAccepted] = useState(false);
   const { itemId } = useParams()
-  const item_id = itemId
 
   const currentUserId = currentUser()
   const initialState = { 
@@ -21,7 +19,6 @@ function SwapForm({ onSubmit, ownerId }) {
      }
   const [item, setItem] = useState (initialState)
 
-     const token = localStorage.getItem('access_token')
 
   const handleChange = (e) => {
     setItem({ ...item, [e.target.name]: e.target.value})
@@ -29,19 +26,7 @@ function SwapForm({ onSubmit, ownerId }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(item)
-    try{
-      await axios.post(`${process.env.REACT_APP_BACKEND_URL}/create_swap/${item_id}/`, item, {
-        headers: {
-          Authorization: `Bearer ${token}`
-        }
-      })
-      setItem(initialState);
-      setOfferAccepted(false);
-      console.log('posted')
-    } catch (error){
-      console.log(error)
-    }
+    onSubmit(item)
 
   };
 

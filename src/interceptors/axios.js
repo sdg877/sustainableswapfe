@@ -9,7 +9,7 @@ axios.interceptors.response.use(
         if(error.response.status === 401 && !refresh) {
             refresh = true
             const response = await axios.post(
-                `${process.env.REACT_BACKEND_URL}/token/refresh`,
+                `${process.env.REACT_APP_BACKEND_URL}/token/refresh/`,
                 {
                     refrsh: localStorage.getItem('refresh_token')
                 },

@@ -54,6 +54,7 @@ function ItemCreate() {
         })
             .then(response => {
                 console.log('Item added successfully:', response.data);
+
                 window.location.href = '/';
             })
             .catch(error => {
