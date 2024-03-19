@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect, useCallBack } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import SwapForm from './SwapForm';
@@ -13,7 +13,7 @@ function ItemViewPage() {
   const [loading, setLoading] = useState(true);
   const loggedInUserId = currentUser(); // Get current user ID
 
-  const fetchItemDetails = useCallBack(async () => {
+  const fetchItemDetails = useCallback(async () => {
     try {
       const [itemResponse, swapsResponse] = await Promise.all([
         axios.get(`${process.env.REACT_APP_BACKEND_URL}/items/${itemId}/`),
