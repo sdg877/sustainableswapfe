@@ -29,8 +29,8 @@ function ItemViewPage() {
   };
 
   useEffect(() => {
-    fetchItemDetails(itemId);
-  });
+    fetchItemDetails();
+  }, [itemId]);
 
 
   const handleFormSubmit = async (formData) => {
