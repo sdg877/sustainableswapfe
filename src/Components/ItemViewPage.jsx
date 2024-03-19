@@ -13,7 +13,7 @@ function ItemViewPage() {
   const [loading, setLoading] = useState(true);
   const loggedInUserId = currentUser(); // Get current user ID
 
-  const fetchItemDetails = async () => {
+  const fetchItemDetails = useCallBack(async () => {
     try {
       const [itemResponse, swapsResponse] = await Promise.all([
         axios.get(`${process.env.REACT_APP_BACKEND_URL}/items/${itemId}/`),
@@ -26,7 +26,7 @@ function ItemViewPage() {
       console.error('Error fetching item details:', error);
       setLoading(false);
     }
-  };
+  }, [itemId]);
 
   useEffect(() => {
     fetchItemDetails();
