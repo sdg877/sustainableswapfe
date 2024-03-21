@@ -11,7 +11,7 @@ function ItemViewPage() {
   const [item, setItem] = useState(null);
   const [swaps, setSwaps] = useState([]);
   const [loading, setLoading] = useState(true);
-  const loggedInUserId = currentUser(); // Get current user ID
+  const loggedInUserId = currentUser(); 
 
   const fetchItemDetails = useCallback(async () => {
     try {
